@@ -34,7 +34,7 @@
             text-decoration: underline;
         }
         header {
-            background: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
+            position: relative;
             color: white;
             height: 350px;
             display: flex;
@@ -42,6 +42,16 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+        }
+        header video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(50%); /* Adds a darker overlay to the video */
         }
         header h1 {
             font-size: 3rem;
@@ -97,9 +107,14 @@
         <a href="#about">About</a>
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
+        <a href="https://blockchainbridge.flarum.cloud/" target="_blank">Join Forum</a>
     </nav>
 
     <header>
+        <video autoplay muted loop>
+            <source src="/path/to/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div>
             <h1>Blockchain Bridger</h1>
             <p>Your Gateway to Web3 & Blockchain Knowledge</p>
@@ -122,7 +137,9 @@
         <section id="contact">
             <h2>Get Involved</h2>
             <p>Join our community and contribute to the future of the internet. Connect with like-minded individuals, share your knowledge, and learn from others. Your journey into the world of blockchain starts here.</p>
-            <a href="mailto:youremail@example.com" class="cta-button">Contact Us</a>
+            <a href="mailto:blockchainbridger@gmail.com" class="cta-button">Contact Us</a>
+            <br>
+            <a href="https://blockchainbridge.flarum.cloud/" target="_blank" class="cta-button">Join Forum</a>
         </section>
     </main>
 
