@@ -155,8 +155,9 @@
     <header>
         <div>
             <h1>Blockchain Bridger</h1>
-            <p>Your Gateway to Web3 & Blockchain Technology Knowledge</p>
-            <a href="#about" class="cta-button">Start Learning</a>
+            <p>Your Gateway to Web3 & Blockchain Knowledge</p>
+            <!-- Changed Start Learning button to link to the forum -->
+            <a href="https://blockchainbridge.flarum.cloud/" target="_blank" class="cta-button">Start Learning</a>
         </div>
     </header>
 
@@ -180,7 +181,7 @@
 
         <!-- Wallet Status Area -->
         <section class="wallet-status">
-            <p>Wallet Status: <span id="walletStatus" class="status">Not Connected</span></p>
+            <p>Wallet Status: <span id="walletStatus" class="status">MetaMask Not Installed</span></p>
             <p id="walletAddress"></p>
         </section>
 
@@ -214,13 +215,14 @@
                     console.error("User denied account access");
                 }
             } else {
-                walletStatus.innerText = 'MetaMask Not Installed';
+                walletStatus.innerText = 'MetaMask Not Installed. Please install MetaMask to interact with the DApp.';
             }
         }
     </script>
 
 </body>
 </html>
+
 
 
 
