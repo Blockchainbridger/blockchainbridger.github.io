@@ -14,15 +14,19 @@
             padding: 0;
             line-height: 1.6;
         }
+
         nav {
-            background-color: #2c3e50;
+            background-color: #1e2129;
             color: white;
             padding: 15px 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+
         nav a {
             color: white;
             text-decoration: none;
@@ -30,12 +34,28 @@
             font-weight: bold;
             font-size: 16px;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
+        .wallet-button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .wallet-button:hover {
+            background-color: #c0392b;
+        }
+
         header {
             position: relative;
-            color: white;
+            background: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
             height: 350px;
             display: flex;
             justify-content: center;
@@ -43,26 +63,21 @@
             text-align: center;
             padding: 20px;
         }
-        header video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(50%); /* Adds a darker overlay to the video */
-        }
+
         header h1 {
             font-size: 3rem;
+            color: white;
             margin: 0;
         }
+
         header p {
             font-size: 1.25rem;
             margin-top: 10px;
+            color: white;
         }
+
         .cta-button {
-            background-color: #e74c3c;
+            background-color: #3498db;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -70,54 +85,77 @@
             display: inline-block;
             margin-top: 20px;
         }
+
         .cta-button:hover {
-            background-color: #c0392b;
+            background-color: #2980b9;
         }
+
         main {
             padding: 40px 20px;
         }
+
         section {
             margin-bottom: 40px;
             text-align: center;
         }
+
         section h2 {
             font-size: 2rem;
             color: #2c3e50;
             margin-bottom: 20px;
         }
+
         footer {
-            background-color: #2c3e50;
+            background-color: #1e2129;
             color: white;
             padding: 20px;
             text-align: center;
         }
+
         footer a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Wallet and transaction area styling */
+        .wallet-status {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .wallet-status p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .wallet-status .status {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#resources">Resources</a>
-        <a href="#contact">Contact</a>
-        <a href="https://blockchainbridge.flarum.cloud/" target="_blank">Join Forum</a>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#resources">Resources</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="wallet-button" onclick="connectWallet()">Connect Wallet</button>
     </nav>
 
     <header>
-        <video autoplay muted loop>
-            <source src="/path/to/video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
         <div>
             <h1>Blockchain Bridger</h1>
-            <p>Your Gateway to Web3 & Blockchain Knowledge</p>
+            <p>Your Gateway to Web3 & Blockchain Technology Knowledge</p>
             <a href="#about" class="cta-button">Start Learning</a>
         </div>
     </header>
@@ -125,9 +163,7 @@
     <main>
         <section id="about">
             <h2>About Blockchain Bridger</h2>
-            <p>Blockchain Bridger is a community-driven platform dedicated to educating individuals about Web3 and blockchain technology through peer-to-peer learning. Our platform fosters an environment where learners and experts alike can collaborate, share knowledge, and grow together. We offer a range of resources, tutorials, and discussions to help you stay ahead in the rapidly evolving world of blockchain. Whether you're new to blockchain or an experienced developer, Blockchain Bridger provides the tools and community support you need to succeed.
-
-                .</p>
+            <p>Blockchain Bridger is a community-driven platform dedicated to educating individuals about Web3 and blockchain technology through peer-to-peer learning. We offer a range of resources, tutorials, and discussions to help you stay ahead in the rapidly evolving world of blockchain.</p>
         </section>
 
         <section id="resources">
@@ -140,9 +176,14 @@
             <h2>Get Involved</h2>
             <p>Join our community and contribute to the future of the internet. Connect with like-minded individuals, share your knowledge, and learn from others. Your journey into the world of blockchain starts here.</p>
             <a href="mailto:blockchainbridger@gmail.com" class="cta-button">Contact Us</a>
-            <br>
-            <a href="https://blockchainbridge.flarum.cloud/" target="_blank" class="cta-button">Join Forum</a>
         </section>
+
+        <!-- Wallet Status Area -->
+        <section class="wallet-status">
+            <p>Wallet Status: <span id="walletStatus" class="status">Not Connected</span></p>
+            <p id="walletAddress"></p>
+        </section>
+
     </main>
 
     <footer>
@@ -152,8 +193,35 @@
         <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
     </footer>
+
+    <!-- Web3.js for connecting to Ethereum wallet -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script>
+        let web3;
+        const walletStatus = document.getElementById('walletStatus');
+        const walletAddress = document.getElementById('walletAddress');
+
+        // Function to connect to MetaMask
+        async function connectWallet() {
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+                try {
+                    await window.ethereum.enable();
+                    const accounts = await web3.eth.getAccounts();
+                    walletStatus.innerText = 'Connected';
+                    walletAddress.innerText = `Wallet Address: ${accounts[0]}`;
+                } catch (error) {
+                    console.error("User denied account access");
+                }
+            } else {
+                walletStatus.innerText = 'MetaMask Not Installed';
+            }
+        }
+    </script>
+
 </body>
 </html>
+
 
 
 
