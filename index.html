@@ -64,6 +64,7 @@
             background-color: #c0392b;
         }
 
+        /* Header styling */
         header {
             height: 100vh;
             display: flex;
@@ -71,29 +72,63 @@
             align-items: center;
             text-align: center;
             color: white;
+            position: relative;
         }
 
         header h1 {
             font-size: 4rem;
             margin: 0;
             color: #f39c12;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         header p {
             font-size: 1.5rem;
             margin-top: 10px;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid white;
+            box-sizing: border-box;
+            animation: typing 10s steps(100, end), blink-caret .75s step-end infinite;
         }
 
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 80%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        /* Circular buttons for Forum and GitHub */
         .cta-button {
             background-color: #3498db;
             color: white;
-            padding: 10px 20px;
+            padding: 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50%;
             display: inline-block;
             margin-top: 20px;
             font-weight: bold;
             text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-button:after {
+            content: '→';
+            font-size: 1.5rem;
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
         }
 
         .cta-button:hover {
@@ -132,21 +167,19 @@
             color: #f39c12;
         }
 
-        /* Wallet and transaction area styling */
-        .wallet-status {
-            text-align: center;
+        .social-links {
             margin-top: 20px;
         }
 
-        .wallet-status p {
-            font-size: 1.2rem;
+        .social-links a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
         }
 
-        .wallet-status .status {
-            font-weight: bold;
-            color: #e74c3c;
+        .social-links a:hover {
+            color: #f39c12;
         }
-
     </style>
 </head>
 <body>
@@ -173,8 +206,9 @@
     <header>
         <div>
             <h1>Blockchain Bridger</h1>
-            <p>Your Gateway to Web3 & Blockchain Technology Knowledge</p>
+            <p>Blockchain Bridger is a community-driven platform dedicated to educating individuals about Web3 and blockchain technology through peer-to-peer learning. We offer a range of resources, tutorials, and discussions to help you stay ahead in the rapidly evolving world of blockchain.</p>
             <a href="https://blockchainbridge.flarum.cloud/" target="_blank" class="cta-button">Join Our Forum</a>
+            <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
         </div>
     </header>
 
@@ -206,11 +240,14 @@
 
     <footer>
         <p>&copy; 2024 Blockchain Bridger. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://x.com/Blockchain_brij" target="_blank">X (Twitter)</a>
+        </div>
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#resources">Resources</a>
-        <a href="coming-soon.html">dApps</a>
-        <a href="coming-soon.html">Smart Contracts</a>
+        <a href="coming-soon.html">dApps (Coming Soon)</a>
+        <a href="coming-soon.html">Smart Contracts (Coming Soon)</a>
         <a href="https://blockchainbridge.flarum.cloud/" target="_blank">Join Our Forum</a>
         <a href="#support">Support Us</a>
     </footer>
