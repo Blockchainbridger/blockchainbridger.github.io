@@ -8,15 +8,26 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #0d0d0d;
+            color: #ffffff;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
+        /* Full-screen background video styling */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
         nav {
-            background-color: #1e2129;
+            background-color: rgba(20, 20, 20, 0.8);
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -36,7 +47,7 @@
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #f39c12;
         }
 
         .wallet-button {
@@ -54,26 +65,23 @@
         }
 
         header {
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
-            height: 350px;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            color: white;
         }
 
         header h1 {
-            font-size: 3rem;
-            color: white;
+            font-size: 4rem;
             margin: 0;
+            color: #f39c12;
         }
 
         header p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin-top: 10px;
-            color: white;
         }
 
         .cta-button {
@@ -84,6 +92,8 @@
             border-radius: 5px;
             display: inline-block;
             margin-top: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         .cta-button:hover {
@@ -101,17 +111,12 @@
 
         section h2 {
             font-size: 2rem;
-            color: #2c3e50;
+            color: #f39c12;
             margin-bottom: 20px;
         }
 
-        /* Intro Video Section */
-        #intro-video {
-            margin: 40px 0;
-        }
-
         footer {
-            background-color: #1e2129;
+            background-color: rgba(20, 20, 20, 0.8);
             color: white;
             padding: 20px;
             text-align: center;
@@ -124,7 +129,7 @@
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #f39c12;
         }
 
         /* Wallet and transaction area styling */
@@ -135,7 +140,6 @@
 
         .wallet-status p {
             font-size: 1.2rem;
-            color: #333;
         }
 
         .wallet-status .status {
@@ -146,6 +150,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Full-screen video background -->
+    <video autoplay muted loop class="video-background">
+        <source src="video/Plexus.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
 
     <nav>
         <div>
@@ -161,7 +171,6 @@
         <div>
             <h1>Blockchain Bridger</h1>
             <p>Your Gateway to Web3 & Blockchain Technology Knowledge</p>
-            <!-- Changed Start Learning button to link to the forum -->
             <a href="https://blockchainbridge.flarum.cloud/" target="_blank" class="cta-button">Start Learning</a>
         </div>
     </header>
@@ -176,14 +185,6 @@
             <h2>Explore Our Resources</h2>
             <p>Delve into our extensive library of resources, from beginner guides to advanced tutorials, covering all aspects of Web3 and blockchain. Whether you're a developer or a curious learner, we have something for everyone.</p>
             <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
-        </section>
-
-        <section id="intro-video">
-            <h2>Watch Our Introductory Video</h2>
-            <video width="100%" controls>
-                <source src="video/plexus_video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
         </section>
 
         <section id="contact">
@@ -235,6 +236,7 @@
 
 </body>
 </html>
+
 
 
 
