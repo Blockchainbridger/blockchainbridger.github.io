@@ -98,11 +98,10 @@
         /* Down-to-up motion text animation */
         .animated-text span {
             display: inline-block;
-            opacity: 0;
-            animation: move 4s ease forwards;
+            animation: move-up 4s ease-in-out infinite;
         }
 
-        @keyframes move {
+        @keyframes move-up {
             0% {
                 opacity: 0;
                 transform: translateY(100%);
@@ -114,7 +113,28 @@
             }
 
             100% {
-                transform: translateY(0);
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Animation for image after dApps */
+        .animated-image {
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            animation: fade-in 3s ease forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
@@ -228,6 +248,9 @@
             <p>Our dApps section is coming soon. Stay tuned for updates.</p>
         </section>
 
+        <!-- Animated Image after dApps -->
+        <img src="Images/Image1.jpg" alt="Incoming Blockchain Image" class="animated-image">
+
         <section id="smart-contracts">
             <h2>Smart Contracts</h2>
             <p>The Smart Contracts section is under development. Check back soon.</p>
@@ -252,26 +275,21 @@
 
         <!-- Social Media Links with Icons -->
         <div class="social-icons">
-            <a href="https://x.com/Blockchain_brij" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/X_logo_2023.svg" alt="X logo"></a>
+            <a href="https://x.com/Blockchain_brij" target="_blank"><img src="Images/X logo.png" alt="X logo"></a>
             <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo"></a>
             <a href="https://youtube.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube logo"></a>
         </div>
     </footer>
 
-    <!-- Web3.js for connecting to Ethereum wallet -->
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script>
-        let web3;
-        const walletStatus = document.getElementById('walletStatus');
-        const walletAddress = document.getElementById('walletAddress');
-
-        // Function to connect to MetaMask
+        // JavaScript for wallet connection (simplified)
         async function connectWallet() {
+            const walletStatus = document.getElementById('walletStatus');
+            const walletAddress = document.getElementById('walletAddress');
+
             if (window.ethereum) {
-                web3 = new Web3(window.ethereum);
                 try {
-                    await window.ethereum.enable();
-                    const accounts = await web3.eth.getAccounts();
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                     walletStatus.innerText = 'Connected';
                     walletAddress.innerText = `Wallet Address: ${accounts[0]}`;
                 } catch (error) {
@@ -285,6 +303,7 @@
 </body>
 
 </html>
+
 
 
 
