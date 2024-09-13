@@ -9,15 +9,40 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f1f1f1;
-            color: #333;
+            background-color: #1e2129;
+            color: #f1f1f1;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Video Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            background: url('C:/Users/user/OneDrive/Documents/GitHub/blockchainbridger.github.io/video/Plexus.mp4') no-repeat center center;
+            background-size: cover;
+            opacity: 0.8;
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
         }
 
         nav {
-            background-color: #1e2129;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -66,14 +91,14 @@
 
         header h1 {
             font-size: 3rem;
-            color: white;
+            color: #ffffff;
             margin: 0;
         }
 
         header p {
             font-size: 1.25rem;
             margin-top: 10px;
-            color: white;
+            color: #ffffff;
         }
 
         .cta-button {
@@ -95,7 +120,6 @@
             background-color: #2980b9;
         }
 
-        /* Down-to-up motion text animation */
         .animated-text span {
             display: inline-block;
             animation: move-up 4s ease-in-out infinite;
@@ -118,7 +142,6 @@
             }
         }
 
-        /* Animation for image after dApps */
         .animated-image {
             width: 100%;
             height: auto;
@@ -138,6 +161,24 @@
             }
         }
 
+        /* Circular and Animated Images */
+        .circular-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            animation: spin 5s infinite linear;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         main {
             padding: 40px 20px;
         }
@@ -149,12 +190,12 @@
 
         section h2 {
             font-size: 2rem;
-            color: #2c3e50;
+            color: #f1c40f;
             margin-bottom: 20px;
         }
 
         footer {
-            background-color: #1e2129;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 20px;
             text-align: center;
@@ -194,6 +235,11 @@
 </head>
 
 <body>
+    <!-- Video Background -->
+    <video autoplay muted loop>
+        <source src="C:/Users/user/OneDrive/Documents/GitHub/blockchainbridger.github.io/video/Plexus.mp4" type="video/mp4">
+    </video>
+
     <!-- Navigation Bar -->
     <nav>
         <div>
@@ -217,29 +263,29 @@
         </div>
     </header>
 
-    <!-- Banner Image -->
-    <img src="Images/Image2.jpg" alt="Blockchain Bridger Banner" style="width: 100%; height: auto; margin-top: 20px;">
+    <!-- Circular Image -->
+    <img src="Images/Image2.jpg" alt="Blockchain Bridger Banner" class="circular-image" style="margin-top: 20px;">
 
     <main>
         <!-- About Section -->
         <section id="about">
             <h2>About Blockchain Bridger</h2>
             <div class="animated-text">
-                <span>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning. We offer a range of resources. You can access tutorials and discussions. Our aim is to keep you ahead in the fast-evolving blockchain world.</span>
+                <span>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology...</span>
             </div>
         </section>
 
         <!-- Resources Section -->
         <section id="resources">
             <h2>Explore Our Resources</h2>
-            <p>We have a wide collection of materials. These cover beginner to advanced topics. From Web3 to blockchain, we have everything. Whether you are a developer or a curious learner, there's something for everyone.</p>
+            <p>We have a wide collection of materials...</p>
             <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
         </section>
 
         <!-- Support Section -->
         <section id="support">
             <h2>Support Us</h2>
-            <p>Your support helps us grow and provide more resources. We will soon add a donation gateway. Stay tuned for updates.</p>
+            <p>Your support helps us grow...</p>
         </section>
 
         <!-- Coming Soon Sections -->
@@ -282,7 +328,6 @@
     </footer>
 
     <script>
-        // JavaScript for wallet connection (simplified)
         async function connectWallet() {
             const walletStatus = document.getElementById('walletStatus');
             const walletAddress = document.getElementById('walletAddress');
@@ -303,6 +348,7 @@
 </body>
 
 </html>
+
 
 
 
