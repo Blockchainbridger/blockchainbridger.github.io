@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -14,19 +14,6 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Fullscreen background video */
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
         }
 
         nav {
@@ -108,6 +95,49 @@
             background-color: #2980b9;
         }
 
+        /* Down-to-up motion text animation */
+        .animated-text span {
+            display: inline-block;
+            animation: move-up 4s ease-in-out infinite;
+        }
+
+        @keyframes move-up {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Animation for image after dApps */
+        .animated-image {
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            animation: fade-in 3s ease forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         main {
             padding: 40px 20px;
         }
@@ -164,12 +194,6 @@
 </head>
 
 <body>
-    <!-- Fullscreen Background Video -->
-    <video autoplay muted loop id="background-video">
-        <source src="C:\Users\user\OneDrive\Documents\GitHub\blockchainbridger.github.io\video\Plexus.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
     <!-- Navigation Bar -->
     <nav>
         <div>
@@ -200,13 +224,15 @@
         <!-- About Section -->
         <section id="about">
             <h2>About Blockchain Bridger</h2>
-            <p>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning. We offer a range of resources. Our aim is to keep you ahead in the fast-evolving blockchain world.</p>
+            <div class="animated-text">
+                <span>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning. We offer a range of resources. You can access tutorials and discussions. Our aim is to keep you ahead in the fast-evolving blockchain world.</span>
+            </div>
         </section>
 
         <!-- Resources Section -->
         <section id="resources">
             <h2>Explore Our Resources</h2>
-            <p>We have a wide collection of materials covering beginner to advanced topics. Whether you are a developer or a curious learner, there's something for everyone.</p>
+            <p>We have a wide collection of materials. These cover beginner to advanced topics. From Web3 to blockchain, we have everything. Whether you are a developer or a curious learner, there's something for everyone.</p>
             <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
         </section>
 
@@ -221,6 +247,9 @@
             <h2>dApps</h2>
             <p>Our dApps section is coming soon. Stay tuned for updates.</p>
         </section>
+
+        <!-- Animated Image after dApps -->
+        <img src="Images/Image1.jpg" alt="Incoming Blockchain Image" class="animated-image">
 
         <section id="smart-contracts">
             <h2>Smart Contracts</h2>
@@ -262,7 +291,7 @@
                 try {
                     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                     walletStatus.innerText = 'Connected';
-                    walletAddress.innerText = `Wallet Address: ${accounts[0]}`;
+                    walletAddress.innerText = Wallet Address: ${accounts[0]};
                 } catch (error) {
                     console.error("User denied account access");
                 }
