@@ -25,6 +25,22 @@
             object-fit: cover;
             z-index: -1;
         }
+        .rotating-image {
+        width: 50%; /* Smaller width for better HD view */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 20px;
+        animation: rotate 10s infinite linear; /* Apply rotation animation */
+        border-radius: 10px; /* Optional: for a smooth cornered look */
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
 
         nav {
             background-color: #1e2129;
@@ -233,8 +249,9 @@
         </div>
     </header>
 
-    <!-- Banner Image -->
-    <img src="Images/Learn Blockchain.jpg" alt="Blockchain Bridger Banner" style="width: 100%; height: auto; margin-top: 20px;">
+    <!-- Banner Image with Rotation -->
+<img src="Images/Learn Blockchain.jpg" alt="Blockchain Bridger Banner" class="rotating-image" style="width: 50%; height: auto; margin-top: 20px;">
+
 
     <main>
         <!-- About Section -->
