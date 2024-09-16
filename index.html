@@ -9,13 +9,23 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f1f1f1;
             color: #333;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
+        /* Background video styling */
+        #backgroundVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        /* Navigation styling */
         nav {
             background-color: #1e2129;
             color: white;
@@ -55,24 +65,23 @@
         }
 
         header {
-            position: relative;
             height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         header h1 {
             font-size: 3rem;
             color: white;
-            margin: 0;
         }
 
         header p {
             font-size: 1.25rem;
-            margin-top: 10px;
             color: white;
         }
 
@@ -87,55 +96,8 @@
             position: relative;
         }
 
-        .cta-button:after {
-            content: ' ➔';
-        }
-
         .cta-button:hover {
             background-color: #2980b9;
-        }
-
-        /* Down-to-up motion text animation */
-        .animated-text span {
-            display: inline-block;
-            animation: move-up 4s ease-in-out infinite;
-        }
-
-        @keyframes move-up {
-            0% {
-                opacity: 0;
-                transform: translateY(100%);
-            }
-
-            50% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-        }
-
-        /* Animation for image after dApps */
-        .animated-image {
-            width: 100%;
-            height: auto;
-            opacity: 0;
-            animation: fade-in 3s ease forwards;
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         main {
@@ -158,6 +120,7 @@
             color: white;
             padding: 20px;
             text-align: center;
+            z-index: 1;
         }
 
         footer a {
@@ -182,26 +145,93 @@
             display: inline-block;
         }
 
-        .social-icons a:hover {
-            text-decoration: underline;
+        /* Blockchain Lifecycle Section */
+        .lifecycle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 50px;
         }
 
-        .social-icons img {
-            width: 30px;
-            height: 30px;
+        .lifecycle-stage {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
         }
+
+        /* Arrow between stages */
+        .lifecycle-arrow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .lifecycle-stage:nth-child(1) {
+            top: 0;
+        }
+
+        .lifecycle-stage:nth-child(2) {
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lifecycle-stage:nth-child(3) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .lifecycle-stage:nth-child(4) {
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lifecycle-arrow::before {
+            content: '➔';
+            color: white;
+            font-size: 2rem;
+        }
+
+        .lifecycle-arrow:nth-child(2)::before {
+            transform: rotate(90deg);
+        }
+
+        .lifecycle-arrow:nth-child(3)::before {
+            transform: rotate(180deg);
+        }
+
+        .lifecycle-arrow:nth-child(4)::before {
+            transform: rotate(270deg);
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="C:/Users/user/OneDrive/Documents/GitHub/blockchainbridger.github.io/video/Plexus.mp4" type="video/mp4">
+    </video>
+
     <!-- Navigation Bar -->
     <nav>
         <div>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#resources">Resources</a>
-            <a href="#dapps">dApps </a>
-            <a href="#smart-contracts">Smart Contracts </a>
+            <a href="#dapps">dApps</a>
+            <a href="#smart-contracts">Smart Contracts</a>
             <a href="#support">Support Us</a>
         </div>
         <button class="wallet-button" onclick="connectWallet()">Connect Wallet</button>
@@ -217,49 +247,26 @@
         </div>
     </header>
 
-    <!-- Banner Image -->
-    <img src="Images/Image2.jpg" alt="Blockchain Bridger Banner" style="width: 100%; height: auto; margin-top: 20px;">
-
     <main>
-        <!-- About Section -->
-        <section id="about">
-            <h2>About Blockchain Bridger</h2>
-            <div class="animated-text">
-                <span>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning. We offer a range of resources. You can access tutorials and discussions. Our aim is to keep you ahead in the fast-evolving blockchain world.</span>
+        <!-- Blockchain Lifecycle Section -->
+        <section id="lifecycle">
+            <h2>Blockchain Technology Learning Lifecycle</h2>
+            <div class="lifecycle-container">
+                <div class="lifecycle-stage" style="top: 0;">Beginner</div>
+                <div class="lifecycle-stage" style="right: 0;">Intermediate</div>
+                <div class="lifecycle-stage" style="bottom: 0;">Advanced</div>
+                <div class="lifecycle-stage" style="left: 0;">Expert</div>
+                <div class="lifecycle-arrow" style="top: 25%;"></div>
+                <div class="lifecycle-arrow" style="right: 25%;"></div>
+                <div class="lifecycle-arrow" style="bottom: 25%;"></div>
+                <div class="lifecycle-arrow" style="left: 25%;"></div>
             </div>
         </section>
 
-        <!-- Resources Section -->
-        <section id="resources">
-            <h2>Explore Our Resources</h2>
-            <p>We have a wide collection of materials. These cover beginner to advanced topics. From Web3 to blockchain, we have everything. Whether you are a developer or a curious learner, there's something for everyone.</p>
-            <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
-        </section>
-
-        <!-- Support Section -->
-        <section id="support">
-            <h2>Support Us</h2>
-            <p>Your support helps us grow and provide more resources. We will soon add a donation gateway. Stay tuned for updates.</p>
-        </section>
-
-        <!-- Coming Soon Sections -->
-        <section id="dapps">
-            <h2>dApps</h2>
-            <p>Our dApps section is coming soon. Stay tuned for updates.</p>
-        </section>
-
-        <!-- Animated Image after dApps -->
-        <img src="Images/Image1.jpg" alt="Incoming Blockchain Image" class="animated-image">
-
-        <section id="smart-contracts">
-            <h2>Smart Contracts</h2>
-            <p>The Smart Contracts section is under development. Check back soon.</p>
-        </section>
-
-        <!-- Wallet Status Area -->
-        <section class="wallet-status">
-            <p>Wallet Status: <span id="walletStatus" class="status">MetaMask Not Installed</span></p>
-            <p id="walletAddress"></p>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Blockchain Bridger</h2>
+            <p>Blockchain Bridger is a community-driven platform...</p>
         </section>
     </main>
 
@@ -269,11 +276,11 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#resources">Resources</a>
-        <a href="#dapps">dApps </a>
-        <a href="#smart-contracts">Smart Contracts </a>
+        <a href="#dapps">dApps</a>
+        <a href="#smart-contracts">Smart Contracts</a>
         <a href="#support">Support Us</a>
 
-        <!-- Social Media Links with Icons -->
+        <!-- Social Media Links -->
         <div class="social-icons">
             <a href="https://x.com/Blockchain_brij" target="_blank"><img src="Images/X logo.png" alt="X logo"></a>
             <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo"></a>
@@ -291,7 +298,7 @@
                 try {
                     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                     walletStatus.innerText = 'Connected';
-                    walletAddress.innerText = Wallet Address: ${accounts[0]};
+                    walletAddress.innerText = `Wallet Address: ${accounts[0]}`;
                 } catch (error) {
                     console.error("User denied account access");
                 }
@@ -303,6 +310,7 @@
 </body>
 
 </html>
+
 
 
 
