@@ -144,13 +144,28 @@
             }
         }
 
-        /* Animation for image after dApps */
-        .animated-image {
-            width: 100%;
-            height: auto;
+          /* Animation for image after dApps */
+    .animated-image {
+        width: 150px; /* Reduce the size for better HD quality */
+        height: 150px; /* Ensure it's a square for circular shape */
+        border-radius: 50%; /* Make the image circular */
+        opacity: 0; /* Initial opacity for fade-in effect */
+        animation: fade-in 3s ease forwards; /* Fade-in animation */
+        float: right; /* Push the image to the right side */
+        margin: 20px; /* Optional: Add margin to avoid edge contact */
+        object-fit: cover; /* Ensure image fits well within the circular shape */
+    }
+
+    @keyframes fade-in {
+        0% {
             opacity: 0;
-            animation: fade-in 3s ease forwards;
+            transform: translateX(100%);
         }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
         @keyframes fade-in {
             0% {
