@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,6 +15,7 @@
             padding: 0;
             line-height: 1.6;
         }
+
         /* Fullscreen background video */
         #background-video {
             position: fixed;
@@ -25,22 +26,6 @@
             object-fit: cover;
             z-index: -1;
         }
-        .rotating-image {
-        width: 50%; /* Smaller width for better HD view */
-        height: auto; /* Maintain aspect ratio */
-        margin-top: 20px;
-        animation: rotate 10s infinite linear; /* Apply rotation animation */
-        border-radius: 10px; /* Optional: for a smooth cornered look */
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
 
         nav {
             background-color: #1e2129;
@@ -121,51 +106,17 @@
             background-color: #2980b9;
         }
 
-        /* Down-to-up motion text animation */
-        .animated-text span {
-            display: inline-block;
-            animation: move-up 4s ease-in-out infinite;
-        }
-
-        @keyframes move-up {
-            0% {
-                opacity: 0;
-                transform: translateY(100%);
-            }
-
-            50% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-100%);
-            }
-        }
-
-          /* Animation for image after dApps */
-    .animated-image {
-        width: 150px; /* Reduce the size for better HD quality */
-        height: 150px; /* Ensure it's a square for circular shape */
-        border-radius: 50%; /* Make the image circular */
-        opacity: 0; /* Initial opacity for fade-in effect */
-        animation: fade-in 3s ease forwards; /* Fade-in animation */
-        float: right; /* Push the image to the right side */
-        margin: 20px; /* Optional: Add margin to avoid edge contact */
-        object-fit: cover; /* Ensure image fits well within the circular shape */
-    }
-
-    @keyframes fade-in {
-        0% {
+        /* Animated Image after dApps */
+        .animated-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             opacity: 0;
-            transform: translateX(100%);
+            animation: fade-in 3s ease forwards;
+            float: right;
+            margin: 20px;
+            object-fit: cover;
         }
-        100% {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 
         @keyframes fade-in {
             0% {
@@ -231,13 +182,72 @@
             width: 30px;
             height: 30px;
         }
+
+        /* Hexagon Styles for Blockchain Steps */
+        .hexagon-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hexagon {
+            position: relative;
+            width: 100px;
+            height: 55px;
+            background-color: skyblue;
+            margin: 10px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: navy;
+            font-weight: bold;
+        }
+
+        .hexagon:before {
+            content: attr(data-step);
+            position: absolute;
+            font-size: 0.9rem;
+            top: -40px;
+        }
+
+        /* Add arrows between hexagons */
+        .arrow {
+            display: inline-block;
+            margin: 0 20px;
+            width: 50px;
+            height: 1px;
+            background-color: navy;
+            position: relative;
+        }
+
+        .arrow:after {
+            content: '➔';
+            position: absolute;
+            right: -15px;
+            top: -10px;
+            font-size: 1.5rem;
+            color: navy;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hexagon-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Fullscreen Background Video -->
     <video autoplay muted loop id="background-video">
-        <source src="C:\Users\user\OneDrive\Documents\GitHub\blockchainbridger.github.io\video\Plexus.mp4" type="video/mp4">
+        <source src="video/Plexus.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -247,8 +257,8 @@
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#resources">Resources</a>
-            <a href="#dapps">dApps </a>
-            <a href="#smart-contracts">Smart Contracts </a>
+            <a href="#dapps">dApps</a>
+            <a href="#smart-contracts">Smart Contracts</a>
             <a href="#support">Support Us</a>
         </div>
         <button class="wallet-button" onclick="connectWallet()">Connect Wallet</button>
@@ -264,102 +274,93 @@
         </div>
     </header>
 
-    <!-- Banner video with Rotation -->
-<img src="C:\Users\user\OneDrive\Documents\GitHub\blockchainbridger.github.io\video\Plexus.mp4" alt="Blockchain Bridger Banner" class="animated-video" type="video/mp4">
-
-
     <main>
         <!-- About Section -->
         <section id="about">
             <h2>About Blockchain Bridger</h2>
-            <div class="animated-text">
-                <span>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning. We offer a range of resources. You can access tutorials and discussions. Our aim is to keep you ahead in the fast-evolving blockchain world.</span>
+            <p>Blockchain Bridger is a community-driven platform. We are dedicated to educating individuals about Web3 and blockchain technology. We promote peer-to-peer learning and offer a range of resources to keep you ahead in the fast-evolving blockchain world.</p>
+        </section>
+
+        <!-- How Blockchain Works Section -->
+        <section id="how-blockchain-works">
+            <h2>How Blockchain Works</h2>
+            <div class="hexagon-container">
+                <!-- Step 1: A transaction is requested -->
+                <div class="hexagon" data-step="1">A transaction is requested</div>
+                <div class="arrow"></div>
+
+                <!-- Step 2: A block that represents the transaction is created -->
+                <div class="hexagon" data-step="2">A block is created</div>
+                <div class="arrow"></div>
+
+                <!-- Step 3: The block is sent to every node -->
+                <div class="hexagon" data-step="3">Block sent to nodes</div>
+                <div class="arrow"></div>
+
+                <!-- Step 4: Every node validates the transaction -->
+                <div class="hexagon" data-step="4">Nodes validate</div>
+                <div class="arrow"></div>
+
+                <!-- Step 5: Nodes receive a reward for proof of work/stake -->
+                <div class="hexagon" data-step="5">Nodes rewarded</div>
+                <div class="arrow"></div>
+
+                <!-- Step 6: The block is added to the existing blockchain -->
+                <div class="hexagon" data-step="6">Block added to blockchain</div>
+                <div class="arrow"></div>
+
+                <!-- Step 7: The transaction is complete -->
+                <div class="hexagon" data-step="7">Transaction complete</div>
             </div>
         </section>
 
         <!-- Resources Section -->
         <section id="resources">
-            <h2>Explore Our Resources</h2>
-            <p>We have a wide collection of materials. These cover beginner to advanced topics. From Web3 to blockchain, we have everything. Whether you are a developer or a curious learner, there's something for everyone.</p>
-            <a href="https://github.com/Blockchainbridger/blockchainbridger.github.io" target="_blank" class="cta-button">Visit Our GitHub</a>
+            <h2>Resources</h2>
+            <p>Explore our extensive resources on blockchain, decentralized applications (dApps), and smart contract development. We provide tutorials, guides, and research materials to help you deepen your understanding of Web3 technology.</p>
         </section>
 
-        <!-- Support Section -->
-<section id="support">
-    <h2>Support Us</h2>
-    <p>Your support helps us grow and provide more resources. You can donate via PayPal to help us expand our platform.</p>
-    <!-- PayPal Donation Button -->
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-        <input type="hidden" name="business" value="alice214w@gmail.com" />
-        <input type="hidden" name="no_recurring" value="0" />
-        <input type="hidden" name="item_name" value="Support Blockchain Bridger" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-</section>
-
-        <!-- Coming Soon Sections -->
+        <!-- dApps Section -->
         <section id="dapps">
             <h2>dApps</h2>
-            <p>Our dApps section is coming soon. Stay tuned for updates.</p>
+            <p>Decentralized applications (dApps) are a key component of blockchain technology. Our platform showcases the most innovative dApps and provides insights into how they work.</p>
+            <img src="images/animated-image.jpg" alt="dApps Animation" class="animated-image">
         </section>
 
-        <!-- Animated Image after dApps -->
-        <img src="Images/Image1.jpg" alt="Incoming Blockchain Image" class="animated-image">
-
+        <!-- Smart Contracts Section -->
         <section id="smart-contracts">
             <h2>Smart Contracts</h2>
-            <p>The Smart Contracts section is under development. Check back soon.</p>
+            <p>Smart contracts are self-executing contracts with the terms of the agreement directly written into code. Learn how to develop and deploy smart contracts using Ethereum and other blockchain platforms.</p>
         </section>
 
-        <!-- Wallet Status Area -->
-        <section class="wallet-status">
-            <p>Wallet Status: <span id="walletStatus" class="status">MetaMask Not Installed</span></p>
-            <p id="walletAddress"></p>
+        <!-- Support Us Section -->
+        <section id="support">
+            <h2>Support Us</h2>
+            <p>Join us in promoting blockchain education and empowering communities. You can support Blockchain Bridger by donating, contributing to our open-source projects, or sharing our content.</p>
         </section>
     </main>
 
     <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Blockchain Bridger. All rights reserved.</p>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#resources">Resources</a>
-        <a href="#dapps">dApps </a>
-        <a href="#smart-contracts">Smart Contracts </a>
-        <a href="#support">Support Us</a>
-
-        <!-- Social Media Links with Icons -->
         <div class="social-icons">
-            <a href="https://x.com/Blockchain_brij" target="_blank"><img src="Images/X logo.png" alt="X logo"></a>
-            <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo"></a>
-            <a href="https://youtube.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube logo"></a>
+            <a href="https://twitter.com/BlockchainBridger" target="_blank"><img src="images/twitter-icon.png" alt="Twitter"></a>
+            <a href="https://linkedin.com/in/BlockchainBridger" target="_blank"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="https://github.com/BlockchainBridger" target="_blank"><img src="images/github-icon.png" alt="GitHub"></a>
         </div>
     </footer>
 
+    <!-- Optional JavaScript for Wallet Connection -->
     <script>
-        // JavaScript for wallet connection (simplified)
-        async function connectWallet() {
-            const walletStatus = document.getElementById('walletStatus');
-            const walletAddress = document.getElementById('walletAddress');
-
-            if (window.ethereum) {
-                try {
-                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-                    walletStatus.innerText = 'Connected';
-                    walletAddress.innerText = Wallet Address: ${accounts[0]};
-                } catch (error) {
-                    console.error("User denied account access");
-                }
-            } else {
-                walletStatus.innerText = 'MetaMask Not Installed. Please install MetaMask to interact with the DApp.';
-            }
+        function connectWallet() {
+            alert("Wallet connection feature coming soon!");
         }
     </script>
 </body>
 
 </html>
+
+
 
 
 
