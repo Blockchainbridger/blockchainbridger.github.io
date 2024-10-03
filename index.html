@@ -18,6 +18,7 @@
 
         /* Fullscreen background video */
         #background-video {
+            pointer-events: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -303,12 +304,45 @@
     <!-- Optional JavaScript for Wallet Connection -->
     <script>
         function connectWallet() {
-            alert("Wallet connection feature coming soon!");
+            console.log("Wallet connection feature coming soon!");
         }
     </script>
 </body>
 
 </html>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            hideSections();
+        } else {
+            menu.classList.add('active');
+            showSections();
+        }
+    }
+
+    function showSections() {
+        document.querySelectorAll('section').forEach(section => {
+            section.style.display = 'block';
+        });
+    }
+
+    function hideSections() {
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'home') {
+                section.style.display = 'none';
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        hideSections();
+    });
+</script>
+
+
 
 
 
