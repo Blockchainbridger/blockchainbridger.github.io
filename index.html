@@ -186,15 +186,18 @@
 
     <!-- Navigation Bar -->
     <nav>
-        <div id="menu">
-            <a href="#home">Home</a>
+        <div class="logo">
+            <a href="#home">Blockchain Bridger</a>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button> <!-- Hamburger menu -->
+        <div class="menu" id="menu">
             <a href="#about">About</a>
             <a href="#resources">Resources</a>
             <a href="#dapps">dApps</a>
             <a href="#smart-contracts">Smart Contracts</a>
+            <a href="#meetup">Meetup</a>
             <a href="#support">Support Us</a>
         </div>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
         <button class="wallet-button" onclick="connectWallet()">Connect Wallet</button>
     </nav>
 
