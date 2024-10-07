@@ -386,8 +386,13 @@
     <!-- Optional JavaScript for Wallet Connection -->
     <script>
         function connectWallet() {
-            console.log("Wallet connection feature coming soon!");
-        }
+    const walletButton = document.querySelector('.wallet-button');
+    walletButton.innerHTML = "Connecting...";
+    
+    setTimeout(() => {
+        walletButton.innerHTML = "Wallet Connected";
+    }, 2000);  // Simulate delay for connecting
+}
     </script>
 </body>
 
