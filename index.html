@@ -170,15 +170,34 @@
         @media (min-width: 768px) {
             .menu-icon {
                 display: block;
+                font-size: 30px;
+                cursor: pointer;
             }
 
             nav div {
                 display: none;
             }
             nav div.active {
-        display: flex; /* Show the menu items when the menu is active */
-        flex-direction: column;
+                display: flex; /* Show the menu items when the menu is active */
+                flex-direction: column;
             }
+
+            /* Optional: Style the menu for different screen sizes */
+            nav div a {
+                padding: 10px 0; /* Space between links */
+            }
+
+            /* Style for larger screens to differentiate from mobile, if needed */
+        @media (min-width: 769px) {
+            nav div.active {
+                flex-direction: row; /* Align items horizontally for larger screens */
+        }
+
+            nav div a {
+                margin: 0 15px; /* Add margin between links on larger screens */
+        }
+            }
+
         }
         /* Hexagon Styles for Blockchain Steps */
         .hexagon-container {
@@ -376,32 +395,37 @@
 
 <script>
     function toggleMenu() {
-        const menu = document.getElementById('menu');
-        const sections = document.querySelectorAll('section');
+    const menu = document.getElementById('menu');
+    const sections = document.querySelectorAll('section');
 
-        if (menu.classList.contains('active')) {
-            menu.classList.remove('active');
-            hideSections(sections);
-        } else {
-            menu.classList.add('active');
-            showSections(sections);
-        }
+    // Toggle the active class for the menu
+    menu.classList.toggle('active');
+
+    // Show or hide sections based on the menu's state
+    if (menu.classList.contains('active')) {
+        showSections(sections);
+    } else {
+        hideSections(sections);
     }
+}
 
-    function showSections(sections) {
-        sections.forEach(section => {
-            section.style.display = 'block';
-        });
-    }
+function showSections(sections) {
+    // Show each section by setting display to 'block'
+    sections.forEach(section => {
+        section.style.display = 'block';
+    });
+}
 
-    function hideSections(sections) {
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-    }
+function hideSections(sections) {
+    // Hide each section by setting display to 'none'
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        hideSections(document.querySelectorAll('section'));
+document.addEventListener('DOMContentLoaded', function () {
+    // Initially hide all sections except for the home section
+    hideSections(document.querySelectorAll('section'));
     });
 </script>
 
