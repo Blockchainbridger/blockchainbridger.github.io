@@ -385,14 +385,30 @@
 
     <!-- Optional JavaScript for Wallet Connection -->
     <script>
-        function connectWallet() {
-    const walletButton = document.querySelector('.wallet-button');
-    walletButton.innerHTML = "Connecting...";
-    
-    setTimeout(() => {
-        walletButton.innerHTML = "Wallet Connected";
-    }, 2000);  // Simulate delay for connecting
+        async function connectWallet() {
+    if (typeof window.ethereum !== "undefined") {
+        try {
+            // Request access to MetaMask account
+            const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+            console.log("Connected:", accounts[0]); // Log the first connected account
+            // Update the button text
+            const walletButton = document.querySelector('.wallet-button');
+            walletButton.innerHTML = `Connected: ${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
+        } catch (error) {
+            console.error("Error connecting to MetaMask:", error);
+        }
+    } else {
+        console.log("No MetaMask detected!");
+        // Update the button text to notify the user
+        const walletButton = document.querySelector('.wallet-button');
+        walletButton.innerHTML = "Install MetaMask";
+    }
 }
+
+// Attach the event listener to the button
+const walletButton = document.querySelector('.wallet-button');
+walletButton.addEventListener("click", connectWallet);
+
     </script>
 </body>
 
