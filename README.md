@@ -8,6 +8,7 @@ Welcome to Blockchain Bridger! This repository is your go-to resource for transi
 - Transitioning to Web 3.0
 - Blockchain Fundamentals
 - Ethereum Development
+- Getting Started on Solana
 - Learning Resources
 - Contributing
 ## Introduction
