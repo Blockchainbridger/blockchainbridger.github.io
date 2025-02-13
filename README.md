@@ -57,6 +57,12 @@ For those interested in building on Ethereum, this section offers tutorials and 
 - [Deploying dApps on Ethereum](https://www.dappuniversity.com/articles/the-ultimate-ethereum-dapp-tutorial) - Guidance on deploying decentralized applications.
 {Solidity Lessons by Contract Example](https://github.com/Blockchainbridger/blockchainbridger.github.io) - In-depth Solidity lessons.
 
+## Getting Started on Solana
+For those interested in building on Solana, this section offers tutorials on how to get started on Solana.
+ - https://solana.com/docs/toolkit - Official Solana documentation.
+ - https://solana.com/docs - Quick Start - Build your first Solana program directly in the browser ·
+   Setup Local Environment - Install dependencies for Solana development
+
 ## Learning Resources
 
 Explore a curated list of courses, books, and articles to further your knowledge. This section is updated regularly with the latest and most valuable resources in the blockchain space.
@@ -68,6 +74,7 @@ Explore a curated list of courses, books, and articles to further your knowledge
 - [Awesome Solidity Resources](https://github.com/bkrem/awesome-solidity)- A curated list of Solidity resources.
 - [UseWeb3 - Ethereum Development Hub](https://www.useweb3.xyz/)- A comprehensive resource hub for Ethereum developers.
 - [Buildspace](https://buildspace.so/) - Guided Web3 project-based tutorials.
+- [Learn Solana development basics]-(https://solana.com/docs/intro/quick-start)- Create your first program, understand accounts, send transactions, and explore PDAs and CPIs using Solana Playground. 
 
 ## Contributing
 
