@@ -74,7 +74,7 @@ Explore a curated list of courses, books, and articles to further your knowledge
 - [Awesome Solidity Resources](https://github.com/bkrem/awesome-solidity)- A curated list of Solidity resources.
 - [UseWeb3 - Ethereum Development Hub](https://www.useweb3.xyz/)- A comprehensive resource hub for Ethereum developers.
 - [Buildspace](https://buildspace.so/) - Guided Web3 project-based tutorials.
-- [Learn Solana development basics https://solana.com/docs/intro/quick-start]- Create your first program, understand accounts, send transactions, and explore PDAs and CPIs using Solana Playground. 
+- [Learn Solana development basics](https://solana.com/docs/intro/quick-start) - Create your first program, understand accounts, send transactions, and explore PDAs and CPIs using Solana Playground.
 
 ## Contributing
 
